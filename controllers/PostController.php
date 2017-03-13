@@ -8,6 +8,7 @@
 
 namespace app\controllers;
 
+use app\models\Category;
 use Yii;
 use app\models\TestForm;
 
@@ -49,12 +50,27 @@ class PostController extends AppController{
 
         return $this->render('index', compact('model'));
     }
+
+//    Action Show
     public function actionShow()
     {
         $this->view->title = 'Одна статья';
         $this->view->registerMetaTag(['name' => 'keywords', 'content' => 'Ключевые слова...']);
         $this->view->registerMetaTag(['name' => 'description', 'content' => 'Описание страницы...']);
 //        $this -> layout = 'basic';
-        return $this->render('show');
+
+//        $cats = Category::find()->all();
+//        $cats = Category::find()->orderBy(['id' => SORT_DESC])->all();
+//        $cats = Category::find()->asArray()->all();
+//        $cats = Category::find()->asArray()->where(['parent'=>691])->all();
+//        $cats = Category::find()->asArray()->where(['like', 'title', 'сс'])->all();
+//        $cats = Category::find()->asArray()->where(['<=', 'id', 800])->all();
+//         $cats = Category::find()->asArray()->where(['parent'=>691])->limit(1)->all();
+//         $cats = Category::find()->asArray()->where(['parent'=>691])->limit(1)->one();
+//         $cats = Category::find()->asArray()->where(['parent'=>691])->count();
+         $cats = Category::find()->asArray()->count();
+
+
+        return $this->render('show', compact('cats'));
     }
 }

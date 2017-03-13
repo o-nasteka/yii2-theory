@@ -6,6 +6,22 @@
 
 <h1>Show Action</h1>
 
+<?php
+//  orderBy
+//    foreach($cats as $cat){
+//        echo $cat->title . '<br>';
+//    }
+?>
+
+<?php
+//  asArray
+//    foreach($cats as $cat){
+//        echo $cat['title'] . '<br>';
+//    }
+?>
+
+<?php debug($cats); ?>
+
 <button class="btn btn-success" id="btn">Click me!</button>
 
 <?php
