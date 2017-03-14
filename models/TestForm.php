@@ -8,10 +8,10 @@
 
 namespace app\models;
 
-use yii\base\Model;
+use yii\db\ActiveRecord;
 
 
-class TestForm extends Model{
+class TestForm extends ActiveRecord{
 
     public $name;
     public $email;

@@ -59,10 +59,24 @@ class PostController extends AppController{
         $this->view->registerMetaTag(['name' => 'description', 'content' => 'Описание страницы...']);
 //        $this -> layout = 'basic';
 
-//        $cats = Category::findOne(694);
-//        $cats = Category::find()->with('products')->where('id=694')->all();
-//        $cats = Category::find()->all(); // отложенная "ленивая" загрузка
-        $cats = Category::find()->with('products')->all(); // жадная загрузка
+//        $cats = Category::find()->all();
+//        $cats = Category::find()->orderBy(['id' => SORT_DESC])->all();
+//        $cats = Category::find()->asArray()->all();
+//        $cats = Category::find()->asArray()->where(['parent'=>691])->all();
+//        $cats = Category::find()->asArray()->where(['like', 'title', 'сс'])->all();
+//        $cats = Category::find()->asArray()->where(['<=', 'id', 800])->all();
+//         $cats = Category::find()->asArray()->where(['parent'=>691])->limit(1)->all();
+//         $cats = Category::find()->asArray()->where(['parent'=>691])->limit(1)->one();
+//         $cats = Category::find()->asArray()->where(['parent'=>691])->count();
+//         $cats = Category::find()->asArray()->count();
+//         $cats = Category::findOne(['parent'=>691]);
+//         $cats = Category::findAll(['parent'=>691]);
+//
+//            $query = "SELECT * FROM categories WHERE title LIKE '%pp%'";
+//        $cats = Category::findBySql($query)->all();
+//
+            $query = "SELECT * FROM categories WHERE title LIKE :search";
+            $cats = Category::findBySql($query, [':search' => '%pp%'])->all();
 
         return $this->render('show', compact('cats'));
     }

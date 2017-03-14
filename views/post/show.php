@@ -18,9 +18,25 @@
 //    foreach($cats as $cat){
 //        echo $cat['title'] . '<br>';
 //    }
-?>
+//?>
 
-<?php debug($cats); ?>
+<?php // debug($cats); ?>
+<?php // echo count($cats[0]->products); ?>
+<?php // debug($cats); ?>
+
+<?php
+    foreach ($cats as $cat){
+        echo '<ul>';
+            echo '<li>'. $cat->title. '</li>';
+            $products = $cat->products;
+            foreach ($products as $product){
+                echo '<ul>';
+                echo '<li>' . $product->title .'</li>';
+                echo '</ul>';
+            }
+        echo '</ul>';
+    }
+?>
 
 <button class="btn btn-success" id="btn">Click me!</button>
 
