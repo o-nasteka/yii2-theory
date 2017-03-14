@@ -25,6 +25,9 @@ class PostController extends AppController{
         return parent::beforeAction($action);
     }
 
+    /**
+     * @return string|\yii\web\Response
+     */
     public function actionIndex()
     {
         $this->view->title = 'Все статьи';
@@ -34,13 +37,32 @@ class PostController extends AppController{
             return 'test';
         }
 
+//        $post = TestForm::findOne(2);
+//        debug($post);
+//        $post->delete();
+
+//        debug($post);
+//        $post->email = 'yi@yahoo.com';
+//        $post->save();
+
+//        Удаление всех данных с параметрами
+//        TestForm::deleteAll(['>', 'id', 3]);
+
+//        Удаление всех данных из таблицы
+//        TestForm::deleteAll();
+
         $model = new TestForm();
+
+//        $model->name = 'Автор';
+//        $model->email = 'mail@mail.ua';
+//        $model->text = 'Текст сообщения!';
+//        $model->save();
 
         if ( $model->load(Yii::$app->request->post()) ){
 //            debug($model);
 //            die;
 
-            if( $model->validate() ){
+            if( $model->save() ){
                 Yii::$app->session->setFlash('success', 'Данные успешно отправлены');
                 return $this->refresh();
             } else {

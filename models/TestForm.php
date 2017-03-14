@@ -13,15 +13,22 @@ use yii\db\ActiveRecord;
 
 class TestForm extends ActiveRecord{
 
-//    Свойства для extends Models
+//    Свойства необходимы при использовании extends Models
 //    При использовании ActiveRecords - создаются автоматом
-//    сулужебными запросами yii
+//    сулужебными запросами yii (согласно полям таблицы)
 //    public $name;
 //    public $email;
 //    public $text;
 
+//  Имя используемой таблицы,
+//  если имя класса отличается от имени таблицы
+    public static function tableName()
+    {
+//        Table name
+        return 'posts';
+    }
 
-//    Собственно название Labels формы
+//    Собственное название Labels формы
     public function attributeLabels()
     {
         return [
@@ -35,18 +42,11 @@ class TestForm extends ActiveRecord{
     public function rules()
     {
         return [
-          [ [ 'name', 'email'], 'required' ],
-//          [ ['name', 'email'], 'required', 'message' => 'Обязательное поле']
-            [ 'email', 'email' ],
-//            ['name', 'string','min' => 2, 'tooShort' => 'Слишком короткое имя'],
-//            ['name', 'string','max' => 25, 'tooLong' => 'Слишком длинное имя'],
-            [ 'name', 'string', 'length' => [2,5] ],
-            [ 'name', 'myRule' ],
+          [ [ 'name', 'text'], 'required' ],
+//            [ 'email', 'email' ],
+            [ 'text', 'trim' ],
         ];
     }
 
-    public function myRule($attr){
-
-    }
 
 }
