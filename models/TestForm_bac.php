@@ -8,20 +8,15 @@
 
 namespace app\models;
 
-use yii\db\ActiveRecord;
+use yii\base\Model;
 
 
-class TestForm extends ActiveRecord{
+class TestForm extends Model{
 
-//    Свойства для extends Models
-//    При использовании ActiveRecords - создаются автоматом
-//    сулужебными запросами yii
-//    public $name;
-//    public $email;
-//    public $text;
+    public $name;
+    public $email;
+    public $text;
 
-
-//    Собственно название Labels формы
     public function attributeLabels()
     {
         return [
@@ -31,7 +26,6 @@ class TestForm extends ActiveRecord{
         ];
     }
 
-//    Правила валидации формы
     public function rules()
     {
         return [
@@ -46,6 +40,7 @@ class TestForm extends ActiveRecord{
     }
 
     public function myRule($attr){
+
 
     }
 
