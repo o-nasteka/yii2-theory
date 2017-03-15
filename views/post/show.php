@@ -1,4 +1,6 @@
-<?php // $this->title = 'Show Action';  ?>
+<?php // $this->title = 'Show Action';
+    use app\components\MyWidget;
+?>
 
 <?php $this->beginBlock('block1'); ?>
     <h2>Заголовок страницы</h2>
@@ -24,19 +26,42 @@
 <?php // echo count($cats[0]->products); ?>
 <?php // debug($cats); ?>
 
+
+<!-- Использованиие собственных Widget -->
 <?php
-    foreach ($cats as $cat){
-        echo '<ul>';
-            echo '<li>'. $cat->title. '</li>';
-            $products = $cat->products;
-            foreach ($products as $product){
-                echo '<ul>';
-                echo '<li>' . $product->title .'</li>';
-                echo '</ul>';
-            }
-        echo '</ul>';
-    }
+    // передаем доп.параметр $name
+//    echo MyWidget::widget(['name' => 'Вася!']);
+
+// Использование без параметров
+//    echo MyWidget::widget();
 ?>
+
+<!-- Использование собственного контента в Widget-->
+    <?php MyWidget::begin(); ?>
+        <h1>привет, мир!</h1>
+    <?php MyWidget::end();?>
+
+    <!-- Использование собственного контента в Widget-->
+<?php MyWidget::begin(); ?>
+    <h1>привет, мир!</h1>
+<?php MyWidget::end();?>
+
+<!-- Работа с базой, связанные таблицы products-> categories -->
+<?php
+//    foreach ($cats as $cat){
+//        echo '<ul>';
+//            echo '<li>'. $cat->title. '</li>';
+//            $products = $cat->products;
+//            foreach ($products as $product){
+//                echo '<ul>';
+//                echo '<li>' . $product->title .'</li>';
+//                echo '</ul>';
+//            }
+//        echo '</ul>';
+//    }
+//?>
+
+
 
 <button class="btn btn-success" id="btn">Click me!</button>
 
