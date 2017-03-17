@@ -1,6 +1,7 @@
 <?php
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
+use mihaildev\ckeditor\CKEditor;
 ?>
 
 <?php // $this->title = 'Index Action';  ?>
@@ -32,8 +33,21 @@ use yii\helpers\Html;
 <?= yii\jui\DatePicker::widget(['name' => 'attributeName']) ?>
 
 <!--  --><?//= $form->field($model, 'text')->label('Введите текст сообщения:')->textarea(['rows' => '5']) ?>
-  <?= $form->field($model, 'text')->textarea(['rows' => '5']) ?>
+
+<?php
+// подключение extension CKEditor
+echo $form->field($model, 'text')->widget(CKEditor::className(),[
+    'editorOptions' => [
+        'preset' => 'full', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
+        'inline' => false, //по умолчанию false
+    ],
+]);
+?>
+
+<!--  --><?//= $form->field($model, 'text')->textarea(['rows' => '5']) ?>
   <?= Html::submitButton('Отправить', ['class' => 'btn btn-success']) ?>
 <?php ActiveForm::end(); ?>
+
+
 
 
