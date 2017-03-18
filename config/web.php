@@ -7,7 +7,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'language' => 'ru-RU',
-//    'layout' => 'basic',
+    'layout' => 'main',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -44,7 +44,25 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+//            Добавляем суфикс в конец action, например about.html
+//            'suffix' => '.html',
             'rules' => [
+//                дополнительные шаблоны бработки Url запросов
+//                для отключения suffix .html
+//                [
+//                    правило для Home
+//                    'pattern' => '',
+//                    'route' => 'site/index',
+//                    'suffix' => '',
+//
+//                ],
+//                Используем правило с регулярным выражением
+//                '<action:(about|contact|login)>' => 'site/<action>',
+//                Ниже указан вариант \w+ -любое название для action
+//                '<action:\w+>' => 'site/<action>',
+
+//                'contact' => 'site/contact',
+//                'login' => 'site/login',
             ],
         ],
     ],
